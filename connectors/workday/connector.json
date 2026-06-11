@@ -1,0 +1,32 @@
+{
+  "connectorName": "Workday_HCM_Production",
+  "description": "Workday authoritative source connector for employee lifecycle",
+  "connectionType": "REST",
+  "authType": "BasicAuth",
+  "baseUrl": "https://wd2-impl-services1.workday.com/ccx/service/",
+  "endpoints": {
+    "getUsers": {
+      "method": "GET",
+      "path": "customreport2/{tenant}/ISU_Saviynt/CR_Saviynt_Worker_Extract",
+      "pagination": {
+        "type": "offset",
+        "pageSize": 500
+      }
+    },
+    "getUser": {
+      "method": "GET",
+      "path": "customreport2/{tenant}/ISU_Saviynt/CR_Saviynt_Worker_By_ID?Employee_ID={userId}"
+    }
+  },
+  "attributeMapping": {
+    "username":     "Employee_ID",
+    "firstName":    "Legal_First_Name",
+    "lastName":     "Legal_Last_Name",
+    "email":        "Work_Email",
+    "department":   "Cost_Center_Name",
+    "manager":      "Manager_Employee_ID",
+    "jobTitle":     "Job_Title",
+    "hireDate":     "Hire_Date",
+    "terminationDate": "Termination_Date"
+  }
+}
